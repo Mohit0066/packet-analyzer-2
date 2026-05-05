@@ -52,6 +52,11 @@ std::string appTypeToString(AppType type) {
         case AppType::DISCORD:    return "Discord";
         case AppType::GITHUB:     return "GitHub";
         case AppType::CLOUDFLARE: return "Cloudflare";
+        case AppType::TWITCH:    return "Twitch";
+        case AppType::LINKEDIN:  return "LinkedIn";
+        case AppType::REDDIT:    return "Reddit";
+        case AppType::SNAPCHAT:  return "Snapchat";
+        case AppType::PINTEREST: return "Pinterest";
         default:                  return "Unknown";
     }
 }
@@ -183,10 +188,39 @@ AppType sniToAppType(const std::string& sni) {
         return AppType::GITHUB;
     }
     
-    // Cloudflare
+    // SCloudflare
     if (lower_sni.find("cloudflare") != std::string::npos ||
         lower_sni.find("cf-") != std::string::npos) {
         return AppType::CLOUDFLARE;
+    }
+    // Twitch
+    if (lower_sni.find("twitch") != std::string::npos ||
+        lower_sni.find("twitchapps") != std::string::npos) {
+        return AppType::TWITCH;
+    }
+
+    // LinkedIn
+    if (lower_sni.find("linkedin") != std::string::npos ||
+        lower_sni.find("licdn") != std::string::npos) {
+        return AppType::LINKEDIN;
+    }
+
+    // Reddit
+    if (lower_sni.find("reddit") != std::string::npos ||
+        lower_sni.find("redd.it") != std::string::npos) {
+        return AppType::REDDIT;
+    }
+
+    // Snapchat
+    if (lower_sni.find("snapchat") != std::string::npos ||
+        lower_sni.find("snap.com") != std::string::npos) {
+        return AppType::SNAPCHAT;
+    }
+
+    // Pinterest
+    if (lower_sni.find("pinterest") != std::string::npos ||
+        lower_sni.find("pinimg") != std::string::npos) {
+        return AppType::PINTEREST;
     }
     
     // If SNI is present but not recognized, still mark as TLS/HTTPS
