@@ -61,8 +61,10 @@ bool PcapReader::open(const std::string& filename) {
 void PcapReader::close() {
     if (file_.is_open()) {
         file_.close();
-    }
+}
+
     needs_byte_swap_ = false;
+   
 }
 
 bool PcapReader::readNextPacket(RawPacket& packet) {

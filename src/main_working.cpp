@@ -320,6 +320,8 @@ int main(int argc, char* argv[]) {
     }
     
     std::cout << "\nOutput written to: " << output_file << "\n";
+    std::cout << "Processing Completed!" << std::
     
     return 0;
+
 }
